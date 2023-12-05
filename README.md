@@ -19,5 +19,5 @@ Usage: ./auditparser <folder-path> <output-filename> <tag>
 - for windows 
 
 ```
-Usage: ./auditparser <folder-path> <output-filename> <tag>
+Usage: ./auditparser.exe <folder-path> <output-filename> <tag>
 ```
