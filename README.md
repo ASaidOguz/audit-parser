@@ -14,10 +14,10 @@ chmod +x audit-parser
 ```
 then run 
 ```
-Usage: ./auditparser <folder-path> <output-filename> <tag>
+Usage: ./audit-parser <folder-path> <output-filename> <tag>
 ```
 - for windows 
 
 ```
-Usage: ./auditparser.exe <folder-path> <output-filename> <tag>
+Usage: ./audit-parser.exe <folder-path> <output-filename> <tag>
 ```
