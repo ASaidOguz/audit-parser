@@ -1,0 +1,34 @@
+{
+  "name": "@asaidoguz/audit-parser",
+  "version": "0.0.1",
+  "description": "Simple cli to collect tagged lines from folder",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "go-npm install",
+    "preuninstall": "go-npm uninstall"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASaidOguz/audit-parser.git"
+  },
+  "keywords": [
+    "cli",
+    "parser"
+  ],
+  "author": "ASaidOguz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ASaidOguz/audit-parser/issues"
+  },
+  "homepage": "https://github.com/ASaidOguz/audit-parser#readme",
+  "dependencies": {
+    "go-npm": "^0.1.9",
+    "@asaidoguz/audit-parser":"^0.0.1",
+    "global": "^4.4.0"
+  },
+  "goBinary": {
+    "name": "goreleaser-test",
+    "path": "./.bin",
+    "url": "https://github.com/asaidoguz/audit-parser/releases/download/{{version}}/audit-parser_{{version}}_{{platform}}_{{arch}}.tar.gz"
+  }
+}
