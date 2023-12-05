@@ -73,7 +73,7 @@ func main() {
 
 	// Check if there are enough arguments provided
 	if len(args) < 3 {
-		log.Fatal("Usage: auditparser <folder-path> <output-filename> <tag>")
+		log.Fatal("Usage: ./auditparser <folder-path> <output-filename> <tag>")
 	}
 
 	folder := args[0]
