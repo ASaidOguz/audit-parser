@@ -8,7 +8,12 @@ import (
 	"sync"
 )
 
-func collectAuditTags(folderPath string, tag string, outputFilename string, ch chan string, wg *sync.WaitGroup) {
+type Line struct {
+	line     string
+	fileName string
+}
+
+func collectAuditTags(folderPath string, tag string, outputFilename string, ch chan Line, wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	err := filepath.Walk(folderPath, func(path string, info os.FileInfo, err error) error {
@@ -20,11 +25,16 @@ func collectAuditTags(folderPath string, tag string, outputFilename string, ch c
 			if err != nil {
 				return err
 			}
+
 			fileContent := string(content)
 			lines := strings.Split(fileContent, "\n")
 			for _, line := range lines {
 				if strings.Contains(line, tag) {
-					ch <- line
+					combinedline := &Line{
+						line:     line,
+						fileName: info.Name(),
+					}
+					ch <- *combinedline
 				}
 			}
 		}
@@ -37,7 +47,7 @@ func collectAuditTags(folderPath string, tag string, outputFilename string, ch c
 	close(ch) // Close the channel after completing tasks
 }
 
-func writeToOutput(ch chan string, outputFilename string, wg *sync.WaitGroup) {
+func writeToOutput(ch chan Line, outputFilename string, wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	outputFile, err := os.Create(outputFilename)
@@ -51,14 +61,14 @@ func writeToOutput(ch chan string, outputFilename string, wg *sync.WaitGroup) {
 
 	for line := range ch {
 		lineWG.Add(1)
-		go func(line string) {
+		go func(line Line) {
 			defer lineWG.Done()
 			// Process the line (remove indicators, etc.)
-			processedLine := strings.ReplaceAll(line, "//", "")
+			processedLine := strings.ReplaceAll(line.line, "//", "")
 			processedLine = strings.ReplaceAll(processedLine, "/*", "")
 			processedLine = strings.ReplaceAll(processedLine, "*/", "")
 
-			_, err := outputFile.WriteString(processedLine + "\n")
+			_, err := outputFile.WriteString("file:" + line.fileName + " " + "tag:" + processedLine + "\n")
 			if err != nil {
 				log.Println(err)
 			}
@@ -81,7 +91,7 @@ func main() {
 	tag := args[2]
 
 	var wg sync.WaitGroup
-	ch := make(chan string)
+	ch := make(chan Line)
 
 	wg.Add(2) // Two goroutines to wait for
 

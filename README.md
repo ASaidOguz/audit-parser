@@ -24,7 +24,7 @@ then run
 ```
 example 
 ```
-./audit-parser ./src audit-findings.txt @audit
+./audit-parser ./src audit-findings.txt audit
 ```
 
 - for windows 
@@ -36,6 +36,8 @@ example
 example 
 
 ```
-./audit-parser.exe ./src audit-findings.txt @audit
+./audit-parser.exe ./src audit-findings.txt audit
 ```
+
+- Added file name and tag sections for more information. 
 
