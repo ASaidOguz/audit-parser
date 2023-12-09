@@ -1,6 +1,6 @@
 {
   "name": "@asaidoguz/audit-parser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple cli to collect tagged lines from folder",
   "main": "index.js",
   "scripts": {
@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/ASaidOguz/audit-parser#readme",
   "dependencies": {
-    "go-npm": "^0.1.9",
-    "@asaidoguz/audit-parser":"^0.0.5",
-    "global": "^4.4.0"
+    "@asaidoguz/audit-parser": "^0.0.6",
+    "global": "^4.4.0",
+    "@maple-leaf/go-npm": "^0.1.9"
   },
   "goBinary": {
     "name": "audit-parser",
