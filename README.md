@@ -1,6 +1,6 @@
 ## AuditParser-Go
 
-Simple cli to gather all the tagged line you desire from targeted folder recursively and write them in desired named file. 
+Simple cli to gather all the tagged line you desire from targeted folder recursively and write them in desired named file. You no longer need to traverse inside your smart contract folders and collect your findings. Just use this simple cli to target your project's smart contracts root folder and collect all your tags and name of the files they'r resides.
 
 ### Usage 
 Before install please set your project with npm if it'snt already by 
