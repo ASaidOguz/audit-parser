@@ -8,7 +8,7 @@ Before install please set your project with npm if it'snt already by
 ```
 npm init
 ```
-Collect the binary from node_modules as named audit-parser in @asaidoguz folder  and then set it at the root of your project.
+Collect the binary from node_modules as named audit-parser in .bin folder  and then set it at the root of your project.
 Run the cli according to your os;
 
 - for example in linux 
