@@ -1,11 +1,11 @@
 {
   "name": "@asaidoguz/audit-parser",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Simple cli to collect tagged lines from folder",
   "main": "index.js",
   "scripts": {
-    "postinstall": "go-npm install",
-    "preuninstall": "go-npm uninstall"
+    "postinstall": "go-npm install && node create-symlink.js",
+    "preuninstall": "go-npm uninstall && rm -f ./bin/audit-parser"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ASaidOguz/audit-parser#readme",
   "dependencies": {
-    "@asaidoguz/audit-parser": "^0.0.10",
+    "@asaidoguz/audit-parser": "^0.0.11",
     "global": "^4.4.0",
     "@maple-leaf/go-npm": "^0.1.9"
   },
